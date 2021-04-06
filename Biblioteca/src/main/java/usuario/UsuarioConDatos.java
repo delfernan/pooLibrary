@@ -10,9 +10,9 @@ package usuario;
  * @author apari
  */
 public class UsuarioConDatos extends Socio implements UserData{
-    private String nombre;
-    private String primerAp;
-    private String segundoAp;
+    private String nombre="";
+    private String primerAp="";
+    private String segundoAp="";
     public UsuarioConDatos(String user, String pass) {
         super(user, pass);
     }
@@ -33,17 +33,17 @@ public class UsuarioConDatos extends Socio implements UserData{
 
     @Override
     public String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         return nombre;
     }
 
     @Override
     public String getPrimerAp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return primerAp;
     }
 
     @Override
     public String getSegundoAp() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return segundoAp;
     }
     
 }
