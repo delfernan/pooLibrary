@@ -1,3 +1,9 @@
+package prestamo;
+
+
+import usuario.Socio;
+import producto.Ejemplar;
+
 public class Prestamo {
     private Socio socio;
     private long fechaFin;

@@ -1,13 +1,14 @@
+package producto;
 
-public class Libro extends Elemento {
+public class Ebook extends Elemento {
 
-    public Libro(String titulo, String autor, String idEjemplar) {
+    public Ebook(String titulo, String autor, String idEjemplar) {
         super(titulo, autor, idEjemplar);
-        setTipo("Libro");
+        setTipo("Ebook");
     }
     @Override
     public int getDiasPrestamo() {
-        return super.diasPrestamo;
+        return super.diasPrestamo*2;
     }
     @Override
     public void setTipo(String tipo) {

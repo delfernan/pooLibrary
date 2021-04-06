@@ -1,5 +1,14 @@
+package acceso;
 
+
+import usuario.Socio;
+import producto.Musica;
+import producto.Ebook;
+import producto.Libro;
+import producto.Elemento;
 import java.util.Vector;
+import usuario.UsuarioSinDatos;
+import usuario.UsuarioConDatos;
 
 public class Biblioteca {
 
@@ -42,11 +51,11 @@ public class Biblioteca {
     public static void main(String[] args) {
         //Socios
         Vector<Socio> listaSocios = new Vector();
-        listaSocios.add(new Socio("Socio1"));
-        listaSocios.add(new Socio("Socio2"));
-        listaSocios.add(new Socio("Socio3"));
-        listaSocios.add(new Socio("Socio4"));
-        listaSocios.add(new Socio("Socio5"));
+        listaSocios.add(new UsuarioSinDatos("SocioSinDatos1","pass1"));
+        listaSocios.add(new UsuarioSinDatos("SocioSinDatos2","pass2"));
+        listaSocios.add(new UsuarioSinDatos("SocioSinDatos3","pass3"));
+        listaSocios.add(new UsuarioConDatos("SocioConDatos1","passConDatos1"));
+        listaSocios.add(new UsuarioConDatos("SocioConDatos2","passConDatos2"));
 
         //Elementos (con un ejemplar cada uno al menos)
         Vector<Elemento> listaElementos = new Vector();

@@ -1,15 +1,18 @@
+package usuario;
 
+
+import prestamo.Prestamo;
+import producto.Ejemplar;
 import java.util.Vector;
 
-public class Socio {
-    private String nombre;
+public class Socio extends UserLogin implements UserPrestamo{
     private Vector<Prestamo> listaPrestamos;
 
-    public Socio(String nombre) {
-        this.nombre = nombre;
+    public Socio(String user, String pass) {
+        super(user, pass);
         listaPrestamos=new Vector();
     }
-    
+
     public Vector<Ejemplar> ejemplaresPasadosDeFecha() {
         Vector<Ejemplar> vRet=new Vector();
         for (int i = 0; i < listaPrestamos.size(); i++)
@@ -22,17 +25,13 @@ public class Socio {
         listaPrestamos.add(new Prestamo(this,ejemplar));
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getUser() {
+        return super.user;
     }
 
     @Override
     public String toString() {
-        String sRet="Socio " + "nombre=" + nombre+"\n";
+        String sRet="Socio user=" + user+"\n";
         sRet+="\tLista de Prestamos: \n";
         for (int i=0;i<listaPrestamos.size();i++)
             sRet+="\t"+listaPrestamos.elementAt(i)+"\n";

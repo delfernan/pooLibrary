@@ -1,3 +1,5 @@
+package producto;
+
 
 import java.util.Vector;
 
