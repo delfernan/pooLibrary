@@ -1,10 +1,12 @@
-package producto;
+package producto.negocio;
+
+import producto.EjemplarRepository;
 
 
 public class Musica extends Elemento {
 
-    public Musica(String titulo, String autor, String idEjemplar) {
-        super(titulo, autor, idEjemplar);
+    public Musica(EjemplarRepository repo,String titulo, String autor, String idEjemplar) {
+        super(repo,titulo, autor, idEjemplar);
         setTipo("Musica");
     }
 
