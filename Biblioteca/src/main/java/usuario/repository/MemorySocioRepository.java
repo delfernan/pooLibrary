@@ -1,4 +1,4 @@
-package usuario;
+package usuario.repository;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

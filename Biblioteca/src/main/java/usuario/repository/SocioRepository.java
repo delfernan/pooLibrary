@@ -1,4 +1,4 @@
-package usuario;
+package usuario.repository;
 
 import java.util.ArrayList;
 import usuario.negocio.Socio;

@@ -1,9 +1,9 @@
-package producto;
+package producto.repository;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import producto.negocio.Elemento;
+
 
 public class MemoryElementoRepository implements ElementoRepository{
     private AbstractMap<String,Elemento> elementos;

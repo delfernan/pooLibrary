@@ -1,10 +1,8 @@
-package producto;
+package producto.repository;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import producto.negocio.Ejemplar;
-import producto.negocio.Elemento;
 
 //import java.util.AbstractList;
 //import java.util.ArrayList;

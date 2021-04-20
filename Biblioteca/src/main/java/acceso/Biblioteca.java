@@ -1,5 +1,6 @@
 package acceso;
 
+import usuario.SocioManager;
 import java.util.ArrayList;
 import producto.ElementoRepository;
 import producto.MemoryEjemplarRepository;

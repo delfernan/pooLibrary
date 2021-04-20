@@ -1,8 +1,6 @@
-package producto.negocio;
+package producto.repository;
 
 import java.util.ArrayList;
-import producto.EjemplarRepository;
-import producto.ElementoRepository;
 
 public class ElementoManager {
     private ElementoRepository repo;

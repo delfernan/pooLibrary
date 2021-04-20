@@ -1,7 +1,8 @@
-package usuario.negocio;
+package usuario.repository;
 
 import java.util.ArrayList;
 import usuario.SocioRepository;
+import usuario.negocio.Socio;
 
 public class SocioManager {
     private SocioRepository repo;

@@ -1,4 +1,4 @@
-package producto;
+package producto.repository;
 
 import java.util.ArrayList;
 import producto.negocio.Elemento;
