@@ -1,12 +1,9 @@
-package producto.negocio;
-
-import producto.EjemplarRepository;
-
+package producto.model;
 
 public class Libro extends Elemento {
 
-    public Libro(EjemplarRepository repo,String titulo, String autor, String idEjemplar) {
-        super(repo,titulo, autor, idEjemplar);
+    public Libro(String titulo, String autor) {
+        super(titulo, autor);
         setTipo("Libro");
     }
     @Override

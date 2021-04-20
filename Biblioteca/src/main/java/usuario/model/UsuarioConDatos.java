@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuario.negocio;
+package usuario.model;
+
+import java.io.Serializable;
 
 /**
  *
  * @author apari
  */
 public class UsuarioConDatos extends Socio implements UserData{
+    private static final long serialVersionUID = 12345678911L;
     private String nombre="";
     private String primerAp="";
     private String segundoAp="";
@@ -44,6 +47,12 @@ public class UsuarioConDatos extends Socio implements UserData{
     @Override
     public String getSegundoAp() {
         return segundoAp;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioConDatos{" + "nombre=" + nombre + ", primerAp=" + primerAp + ", segundoAp=" + segundoAp + '}'+
+                super.toString();
     }
     
 }

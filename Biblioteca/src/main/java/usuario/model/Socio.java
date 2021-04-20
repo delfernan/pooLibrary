@@ -1,24 +1,23 @@
-package usuario.negocio;
+package usuario.model;
 
-
-import prestamo.negocio.Prestamo;
-import producto.negocio.Ejemplar;
-import java.util.Vector;
+import java.util.ArrayList;
+import prestamo.model.Prestamo;
+import producto.model.Ejemplar;
 
 public class Socio extends UserLogin implements UserPrestamo{
-    private Vector<Prestamo> listaPrestamos;
+    private ArrayList<Prestamo> listaPrestamos;
 
     public Socio(String user, String pass) {
         super(user, pass);
-        listaPrestamos=new Vector();
+        listaPrestamos=new ArrayList<>();
     }
 
-    public Vector<Ejemplar> ejemplaresPasadosDeFecha() {
-        Vector<Ejemplar> vRet=new Vector();
+    public ArrayList<Ejemplar> ejemplaresPasadosDeFecha() {
+        ArrayList<Ejemplar> aRet=new ArrayList();
         for (int i = 0; i < listaPrestamos.size(); i++)
-            if(listaPrestamos.elementAt(i).fueraDePlazo())
-                vRet.add(listaPrestamos.elementAt(i).getEjemplar());
-        return vRet;
+            if(listaPrestamos.get(i).fueraDePlazo())
+                aRet.add(listaPrestamos.get(i).getEjemplar());
+        return aRet;
     }
     
     public void addListaPrestamos(Ejemplar ejemplar) {
@@ -34,7 +33,7 @@ public class Socio extends UserLogin implements UserPrestamo{
         String sRet="Socio user=" + user+"\n";
         sRet+="\tLista de Prestamos: \n";
         for (int i=0;i<listaPrestamos.size();i++)
-            sRet+="\t"+listaPrestamos.elementAt(i)+"\n";
+            sRet+="\t"+listaPrestamos.get(i)+"\n";
         return sRet;
     }
 

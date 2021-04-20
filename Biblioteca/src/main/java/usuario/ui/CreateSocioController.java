@@ -10,10 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-//import usuario.MemorySocioRepository;
-//import usuario.SocioRepository;
-import usuario.SocioManager;
-import usuario.negocio.UsuarioSinDatos;
+import usuario.repository.SocioManager;
+import usuario.model.UsuarioSinDatos;
  
 public class CreateSocioController {
     @FXML

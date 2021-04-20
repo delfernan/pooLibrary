@@ -3,6 +3,8 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import producto.model.Ejemplar;
+import producto.model.Elemento;
 
 
 public class MemoryElementoRepository implements ElementoRepository{
@@ -43,8 +45,18 @@ public class MemoryElementoRepository implements ElementoRepository{
     }
 
     @Override
-    public void createEjemplar(String titulo,String idEjemplar) {
+    public void addEjemplar(String titulo,String idEjemplar) {
         Elemento e=elementos.get(titulo);
         repoEjemplares.get(titulo).create(idEjemplar, e);
+    }
+
+    @Override
+    public int ejemplaresDisponibles(String titulo) {
+        return repoEjemplares.get(titulo).ejemplaresDisponibles();
+    }
+
+    @Override
+    public Ejemplar reservarEjemplar(String titulo) {
+        return repoEjemplares.get(titulo).getDisponible();
     }
 }

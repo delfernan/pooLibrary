@@ -1,20 +1,18 @@
 package usuario.repository;
 
+import common.FileUtil;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import usuario.model.Socio;
 
-//import java.util.AbstractList;
-//import java.util.ArrayList;
-
-public class MemorySocioRepository implements SocioRepository{
-//    private AbstractList<Ejemplar> ejemplares;
+public class FileSocioRepository implements SocioRepository{
+    private final String filePath="data/socio.dat";
     private AbstractMap<String,Socio> socios;
 
-    public MemorySocioRepository() {
-        socios=new HashMap<String,Socio>();
+    public FileSocioRepository() {
+        socios=new HashMap<>();
     }
        
     @Override
@@ -25,6 +23,7 @@ public class MemorySocioRepository implements SocioRepository{
     @Override
     public void create(Socio s) {
         socios.put(s.getUser(),s);
+        FileUtil.serializeToFile(filePath,(HashMap)socios);
     }
 
     @Override
@@ -34,8 +33,9 @@ public class MemorySocioRepository implements SocioRepository{
 
     @Override
     public ArrayList<Socio> readAll() {
-       Collection<Socio> values = socios.values();
-       ArrayList<Socio> rE=new ArrayList<>(values);
-       return rE;
+        socios=FileUtil.deserializeFromFile(filePath);
+        Collection<Socio> values = socios.values();
+        ArrayList<Socio> rE=new ArrayList<>(values);
+        return rE;
     }
 }

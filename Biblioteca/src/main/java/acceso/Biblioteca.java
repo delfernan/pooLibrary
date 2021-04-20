@@ -1,14 +1,10 @@
 package acceso;
 
-import usuario.SocioManager;
 import java.util.ArrayList;
-import producto.ElementoRepository;
-import producto.MemoryEjemplarRepository;
-import producto.MemoryElementoRepository;
-import usuario.negocio.*;
-import producto.negocio.*;
-import usuario.MemorySocioRepository;
-import usuario.SocioRepository;
+import producto.repository.*;
+import producto.model.*;
+import usuario.repository.*;
+import usuario.model.*;
 /**
  * Biblioteca demo para POO
  * @author Fernando
@@ -31,30 +27,38 @@ public class Biblioteca {
 
     public void listarSocios() {
         ArrayList listaSocios=mngSocio.readAll();
+        System.out.println("---------------------");
+        System.out.println("SOCIOS");
+        System.out.println("---------------------");
         for (int i = 0; i < listaSocios.size(); i++){
             Socio e=(Socio)listaSocios.get(i);
-            System.out.println(e.getUser());
+            System.out.println(e);
         }
     }
 
     public void listarElementos() {
         ArrayList listaElementos=mngElemento.readAll();
+        System.out.println("---------------------");
+        System.out.println("ELEMENTOS");
+        System.out.println("---------------------");
         for (int i = 0; i < listaElementos.size(); i++){
             Elemento e=(Elemento)listaElementos.get(i);
             System.out.println(e.getTitulo());
+            System.out.println("\tEjemplares disopobles="+ejemplaresDisponibles(e.getTitulo()));
         }
     }
 
-    public boolean ejemplaresDisponibles(String titulo) {
+    public int ejemplaresDisponibles(String titulo) {
         int iRes=0;
         Elemento e=mngElemento.read(titulo);
+        
         if (e!=null)
-            iRes=e.ejemplaresDisponibles();
-        return iRes>0;
+            iRes=mngElemento.ejemplaresDisponibles(titulo);
+        return iRes;
     }
 
     public Socio esSocio(Socio socio) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return mngSocio.read(socio.getUser());
     }
 
 //    public void prestar(Socio socio, Elemento elemento) {
@@ -68,55 +72,64 @@ public class Biblioteca {
 //    }
 
     public static void main(String[] args) {
+//        try {
+//            String dirName = "./data";
+//            
+//            Files.list(new File(dirName).toPath())
+//                    .limit(10)
+//                    .forEach(path -> {
+//                        System.out.println(path);
+//                    });
+//        } catch (IOException ex) {
+//            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    
         //Creo repositorios de elemento y socio en memoria
         //Elementos
         ElementoRepository repoElemento=new MemoryElementoRepository();
         ElementoManager mngElemento=new ElementoManager(repoElemento);
         
-        SocioRepository repoSocio=new MemorySocioRepository();
+        SocioRepository repoSocio=new FileSocioRepository();
         SocioManager mngSocio=new SocioManager(repoSocio);
         
         //Socios
         mngSocio.create(new UsuarioSinDatos("SocioSinDatos1","pass1"));
         mngSocio.create(new UsuarioSinDatos("SocioSinDatos2","pass2"));
         mngSocio.create(new UsuarioSinDatos("SocioSinDatos3","pass3"));
-        mngSocio.create(new UsuarioConDatos("SocioConDatos1","passConDatos1"));
-        mngSocio.create(new UsuarioConDatos("SocioConDatos2","passConDatos2"));
+        mngSocio.create(new UsuarioConDatos("SocioConDatos1","passConDatos1","nombre1","ap11","ap12"));
+        mngSocio.create(new UsuarioConDatos("SocioConDatos2","passConDatos2","nombre2","ap21","ap22"));
 
         //Elementos (con un ejemplar cada uno al menos)
         //creo un repositorio de ejemplares para cada elemento
-        mngElemento.create(new Libro(new MemoryEjemplarRepository(),"Libro1", "idLibro1", "idEjemplarLibro11"), "idEjemplarLibro11");
-        mngElemento.create(new Libro(new MemoryEjemplarRepository(),"Libro1", "idLibro1", "idEjemplarLibro11"), "idEjemplarLibro11");
-        mngElemento.create(new Libro(new MemoryEjemplarRepository(),"Libro2", "idLibro2", "idEjemplarLibro21"), "idEjemplarLibro21");
-        mngElemento.create(new Libro(new MemoryEjemplarRepository(),"Libro3", "idLibro3", "idEjemplarLibro31"), "idEjemplarLibro31");
+        mngElemento.create(new Libro("Libro1", "autorLibro1"), "idEjemplarLibro11");
+        mngElemento.create(new Libro("Libro1", "autorLibro1"), "idEjemplarLibro11");
+        mngElemento.create(new Libro("Libro2", "autorLibro2"), "idEjemplarLibro21");
+        mngElemento.create(new Libro("Libro3", "autorLibro3"), "idEjemplarLibro31");
 
-        mngElemento.create(new Musica(new MemoryEjemplarRepository(),"Musica1", "idMusica1", "idEjemplarMusica11"), "idEjemplarMusica11");
-        mngElemento.create(new Musica(new MemoryEjemplarRepository(),"Musica2", "idMusica2", "idEjemplarMusica21"), "idEjemplarMusica21");
-        mngElemento.create(new Musica(new MemoryEjemplarRepository(),"Musica3", "idMusica3", "idEjemplarMusica31"), "idEjemplarMusica31");
+        mngElemento.create(new Musica("Musica1", "autorMusica1"), "idEjemplarMusica11");
+        mngElemento.create(new Musica("Musica2", "autorMusica2"), "idEjemplarMusica21");
+        mngElemento.create(new Musica("Musica3", "autorMusica3"), "idEjemplarMusica31");
 
-        mngElemento.create(new Ebook(new MemoryEjemplarRepository(),"Ebook1", "idEbook1", "idEjemplarEbook11"), "idEjemplarEbook11");
-        mngElemento.create(new Ebook(new MemoryEjemplarRepository(),"Ebook2", "idEbook2", "idEjemplarEbook21"), "idEjemplarEbook21");
-        mngElemento.create(new Ebook(new MemoryEjemplarRepository(),"Ebook3", "idEbook3", "idEjemplarEbook31"), "idEjemplarEbook31");
+        mngElemento.create(new Ebook("Ebook1", "autorEbook1"), "idEjemplarEbook11");
+        mngElemento.create(new Ebook("Ebook2", "autorEbook2"), "idEjemplarEbook21");
+        mngElemento.create(new Ebook("Ebook3", "autorEbook3"), "idEjemplarEbook31");
         
         //Creo biblioteca
         Biblioteca biblio = new Biblioteca(mngSocio, mngElemento);
         
         //listo socios
-        System.out.println("---------------------");
-        System.out.println("SOCIOS");
-        System.out.println("---------------------");
         biblio.listarSocios();
         //listo elementos
-        System.out.println("---------------------");
-        System.out.println("ELEMENTOS");
-        System.out.println("---------------------");
         biblio.listarElementos();
 
-//        //Podemos agregar ejemplares a algunos elemento
-//        listaElementos.elementAt(0).addEjemplar("idEjemplarLibro12");
-//        listaElementos.elementAt(3).addEjemplar("idEjemplarMusica12");
-//
-//        //Y realizar alguna reserva para un socio, por ejemplo para las primeras posiciones
+        //Podemos agregar ejemplares a algunos elemento
+        mngElemento.addEjemplar("Libro1", "idEjemplarLibro12");
+        mngElemento.addEjemplar("Musica1", "idEjemplarMusica12");
+        //listo elementos
+        biblio.listarElementos();
+        
+        //Y realizar alguna reserva para un socio
+        mngSocio.addPrestamo("SocioSinDatos1", mngElemento.reservarEjemplar("Libro1"));
 //        Elemento eReserva = listaElementos.elementAt(0);
 //        Socio sReserva = listaSocios.elementAt(0);
 //        if (biblio.elementoDisponible(eReserva)

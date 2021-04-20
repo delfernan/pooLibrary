@@ -3,6 +3,8 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import producto.model.Ejemplar;
+import producto.model.Elemento;
 
 //import java.util.AbstractList;
 //import java.util.ArrayList;
@@ -33,7 +35,15 @@ public class MemoryEjemplarRepository implements EjemplarRepository{
  
         return iRet;
     }
-
+    
+    @Override
+    public Ejemplar getDisponible() {
+        Ejemplar eRet=null;
+        for (Ejemplar value : ejemplares.values())
+            if (!value.isPrestado()) eRet=value;
+        return eRet;
+    }
+    
     @Override
     public ArrayList<Ejemplar> readAll() {
        Collection<Ejemplar> values = ejemplares.values();

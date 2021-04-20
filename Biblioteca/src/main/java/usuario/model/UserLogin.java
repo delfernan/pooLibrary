@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuario.negocio;
+package usuario.model;
+
+import java.io.Serializable;
 
 /**
  *
  * @author apari
  */
-public abstract class UserLogin {
+public abstract class UserLogin implements Serializable{
+    private static final long serialVersionUID = 12345678910L;
     protected String user;
     protected String pass;
 

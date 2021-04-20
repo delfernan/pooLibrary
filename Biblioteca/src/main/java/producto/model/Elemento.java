@@ -1,39 +1,32 @@
-package producto.negocio;
-
-import java.util.ArrayList;
-import producto.EjemplarRepository;
+package producto.model;
 
 public abstract class Elemento {
 
-    private EjemplarManager ejemplaresMng;
     private String titulo;
     private String autor;
     protected int diasPrestamo;
     protected String tipo;
 
-    public Elemento(EjemplarRepository repo,String titulo, String autor,String idEjemplar) {
+    public Elemento(String titulo, String autor) {
         this.titulo = titulo;
         this.autor = autor;
-        ejemplaresMng=new EjemplarManager(repo);
-        ejemplaresMng.create(this,idEjemplar);
-        //agregamos tambien a la propiedad
-        //ejemplares.add(new Ejemplar(this,idEjemplar));
         
         diasPrestamo = 15;
     }
-
-    public int ejemplaresDisponibles() {
-        return ejemplaresMng.ejemplaresDisponibles();
-    }
     
+    //pasa al manager
+//    public int ejemplaresDisponibles() {
+//        return ejemplaresMng.ejemplaresDisponibles();
+//    }
+    //pasa al manager
 //    public Vector<Ejemplar> getEjemplares() {
 //        return ejemplares;
 //    }
-
-    public void addEjemplar(String idEjemplar) {
-        //ejemplares.add(new Ejemplar(this,idEjemplar));
-        ejemplaresMng.create(this,idEjemplar);
-    }
+    //pasa al manager
+//    public void addEjemplar(String idEjemplar) {
+//        //ejemplares.add(new Ejemplar(this,idEjemplar));
+//        ejemplaresMng.create(this,idEjemplar);
+//    }
 
     public String getTitulo() {
         return titulo;

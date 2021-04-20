@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuario.negocio;
+package usuario.model;
 
-import java.util.Vector;
-import producto.negocio.Ejemplar;
-
+import java.util.ArrayList;
+import producto.model.Ejemplar;
 /**
  *
  * @author apari
  */
-public interface UserPrestamo {
-    public Vector<Ejemplar> ejemplaresPasadosDeFecha();
+public interface UserPrestamo{
+    public ArrayList<Ejemplar> ejemplaresPasadosDeFecha();
     public void addListaPrestamos(Ejemplar ejemplar);
 }

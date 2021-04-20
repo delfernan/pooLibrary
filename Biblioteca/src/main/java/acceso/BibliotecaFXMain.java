@@ -2,12 +2,9 @@ package acceso;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import usuario.MemorySocioRepository;
-import usuario.SocioManager;
-import usuario.SocioRepository;
+import usuario.repository.*;
 import usuario.ui.CreateSocioController;
 
 /**
@@ -21,11 +18,12 @@ public class BibliotecaFXMain extends Application {
     public void start(Stage stage) throws Exception {
         repoSocio=new MemorySocioRepository();
         mngSocio=new SocioManager(repoSocio);
-        Parent root = FXMLLoader.load(getClass().getResource("/usuario/ui/CreateSocio.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/usuario/ui/CreateSocio.fxml"));
         CreateSocioController controller = new CreateSocioController();
         controller.setManager(mngSocio);
+        root.setController(controller);
         stage.setTitle("Create Socio");
-        stage.setScene(new Scene(root, 300, 275));
+        stage.setScene(new Scene(root.load(), 300, 275));
         stage.show();
     }
 
