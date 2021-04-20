@@ -4,7 +4,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import usuario.negocio.Socio;
+import usuario.model.Socio;
 
 //import java.util.AbstractList;
 //import java.util.ArrayList;

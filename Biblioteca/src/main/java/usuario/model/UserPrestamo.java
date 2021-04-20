@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuario.negocio;
+package usuario.model;
 
 import java.util.Vector;
-import producto.negocio.Ejemplar;
+import producto.model.Ejemplar;
 
 /**
  *

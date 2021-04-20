@@ -3,6 +3,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import producto.model.Elemento;
 
 
 public class MemoryElementoRepository implements ElementoRepository{

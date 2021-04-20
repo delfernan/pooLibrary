@@ -1,6 +1,6 @@
-package producto.negocio;
+package producto.model;
 
-import producto.EjemplarRepository;
+import producto.repository.EjemplarRepository;
 
 
 public class Libro extends Elemento {

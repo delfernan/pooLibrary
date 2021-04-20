@@ -1,6 +1,8 @@
 package producto.repository;
 
 import java.util.ArrayList;
+import producto.model.Elemento;
+import producto.model.Ejemplar;
 
 public class EjemplarManager {
     private EjemplarRepository repo;

@@ -1,7 +1,7 @@
 package producto.repository;
 
 import java.util.ArrayList;
-import producto.negocio.Elemento;
+import producto.model.Elemento;
 
 public interface ElementoRepository {
     public boolean exists(String titulo);

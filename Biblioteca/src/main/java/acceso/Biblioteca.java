@@ -1,14 +1,10 @@
 package acceso;
 
-import usuario.SocioManager;
 import java.util.ArrayList;
-import producto.ElementoRepository;
-import producto.MemoryEjemplarRepository;
-import producto.MemoryElementoRepository;
-import usuario.negocio.*;
-import producto.negocio.*;
-import usuario.MemorySocioRepository;
-import usuario.SocioRepository;
+import producto.repository.*;
+import producto.model.*;
+import usuario.repository.*;
+import usuario.model.*;
 /**
  * Biblioteca demo para POO
  * @author Fernando

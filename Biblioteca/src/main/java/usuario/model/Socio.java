@@ -1,8 +1,7 @@
-package usuario.negocio;
+package usuario.model;
 
-
-import prestamo.negocio.Prestamo;
-import producto.negocio.Ejemplar;
+import prestamo.model.Prestamo;
+import producto.model.Ejemplar;
 import java.util.Vector;
 
 public class Socio extends UserLogin implements UserPrestamo{

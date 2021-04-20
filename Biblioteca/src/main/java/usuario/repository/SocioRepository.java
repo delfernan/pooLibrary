@@ -1,7 +1,7 @@
 package usuario.repository;
 
 import java.util.ArrayList;
-import usuario.negocio.Socio;
+import usuario.model.Socio;
 
 public interface SocioRepository {
     public boolean exists(String user);

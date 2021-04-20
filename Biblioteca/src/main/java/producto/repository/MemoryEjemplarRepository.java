@@ -3,6 +3,8 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import producto.model.Ejemplar;
+import producto.model.Elemento;
 
 //import java.util.AbstractList;
 //import java.util.ArrayList;

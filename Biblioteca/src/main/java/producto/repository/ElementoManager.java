@@ -1,6 +1,7 @@
 package producto.repository;
 
 import java.util.ArrayList;
+import producto.model.Elemento;
 
 public class ElementoManager {
     private ElementoRepository repo;

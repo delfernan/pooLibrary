@@ -1,6 +1,6 @@
-package producto.negocio;
+package producto.model;
 
-import prestamo.negocio.Prestamo;
+import prestamo.model.Prestamo;
 import java.util.Vector;
 
 public class Ejemplar {

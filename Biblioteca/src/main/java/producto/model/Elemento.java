@@ -1,7 +1,8 @@
-package producto.negocio;
+package producto.model;
 
 import java.util.ArrayList;
-import producto.EjemplarRepository;
+import producto.repository.EjemplarManager;
+import producto.repository.EjemplarRepository;
 
 public abstract class Elemento {
 

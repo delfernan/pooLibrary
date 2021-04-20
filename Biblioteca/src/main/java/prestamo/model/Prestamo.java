@@ -1,8 +1,8 @@
-package prestamo.negocio;
+package prestamo.model;
 
 
-import usuario.negocio.Socio;
-import producto.negocio.Ejemplar;
+import usuario.model.Socio;
+import producto.model.Ejemplar;
 
 public class Prestamo {
     private Socio socio;
