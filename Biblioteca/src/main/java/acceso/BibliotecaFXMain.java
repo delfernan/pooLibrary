@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import usuario.repository.*;
+import usuario.repository.MemorySocioRepository;
+import usuario.repository.SocioManager;
+import usuario.repository.SocioRepository;
 import usuario.ui.CreateSocioController;
 
 /**

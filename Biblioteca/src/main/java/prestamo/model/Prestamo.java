@@ -1,16 +1,16 @@
 package prestamo.model;
 
 
+import producto.model.IEjemplar;
 import usuario.model.Socio;
-import producto.model.Ejemplar;
 
 public class Prestamo {
     private Socio socio;
     private long fechaFin;
     private long fechaDevolucionReal;
-    private Ejemplar ejemplar;
+    private IEjemplar ejemplar;
 
-    public Prestamo(Socio socio, Ejemplar ejemplar) {
+    public Prestamo(Socio socio, IEjemplar ejemplar) {
         this.socio = socio;
         this.ejemplar = ejemplar;
         fechaFin=System.currentTimeMillis()+
@@ -34,7 +34,7 @@ public class Prestamo {
         return bRet;
     }
     
-    public Ejemplar getEjemplar() {
+    public IEjemplar getEjemplar() {
         return ejemplar;
     }
 

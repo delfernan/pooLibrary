@@ -1,10 +1,17 @@
 package acceso;
 
-import java.util.ArrayList;
-import producto.repository.*;
 import producto.model.*;
-import usuario.repository.*;
-import usuario.model.*;
+import producto.repository.ElementoManager;
+import producto.repository.ElementoRepository;
+import producto.repository.MemoryElementoRepository;
+import usuario.model.Socio;
+import usuario.model.UsuarioConDatos;
+import usuario.model.UsuarioSinDatos;
+import usuario.repository.FileSocioRepository;
+import usuario.repository.SocioManager;
+import usuario.repository.SocioRepository;
+
+import java.util.ArrayList;
 /**
  * Biblioteca demo para POO
  * @author Fernando
@@ -30,10 +37,11 @@ public class Biblioteca {
         System.out.println("---------------------");
         System.out.println("SOCIOS");
         System.out.println("---------------------");
-        for (int i = 0; i < listaSocios.size(); i++){
-            Socio e=(Socio)listaSocios.get(i);
-            System.out.println(e);
-        }
+        if(listaSocios!=null)
+            for (int i = 0; i < listaSocios.size(); i++){
+                Socio e=(Socio)listaSocios.get(i);
+                System.out.println(e);
+            }
     }
 
     public void listarElementos() {
@@ -101,19 +109,17 @@ public class Biblioteca {
 
         //Elementos (con un ejemplar cada uno al menos)
         //creo un repositorio de ejemplares para cada elemento
-        mngElemento.create(new Libro("Libro1", "autorLibro1"), "idEjemplarLibro11");
-        mngElemento.create(new Libro("Libro1", "autorLibro1"), "idEjemplarLibro11");
-        mngElemento.create(new Libro("Libro2", "autorLibro2"), "idEjemplarLibro21");
-        mngElemento.create(new Libro("Libro3", "autorLibro3"), "idEjemplarLibro31");
+        Elemento eLibro1=new Libro("Libro1", "autorLibro1");
+        Ejemplar ejLibro11=new Ejemplar(eLibro1,"ejLibro11");
+        Elemento eMusica1=new Libro("Musica1", "autorMusica1");
+        Ejemplar ejMusica11=new Ejemplar(eMusica1,"ejMusica11");
+        Elemento eEbook1=new Libro("Ebook1", "autorEbook1");
+        Ejemplar ejEbook11=new Ejemplar(eEbook1,"ejEbook11");
 
-        mngElemento.create(new Musica("Musica1", "autorMusica1"), "idEjemplarMusica11");
-        mngElemento.create(new Musica("Musica2", "autorMusica2"), "idEjemplarMusica21");
-        mngElemento.create(new Musica("Musica3", "autorMusica3"), "idEjemplarMusica31");
+        mngElemento.create(eLibro1,ejLibro11);
+        mngElemento.create(eMusica1,ejMusica11);
+        mngElemento.create(eEbook1,ejEbook11);
 
-        mngElemento.create(new Ebook("Ebook1", "autorEbook1"), "idEjemplarEbook11");
-        mngElemento.create(new Ebook("Ebook2", "autorEbook2"), "idEjemplarEbook21");
-        mngElemento.create(new Ebook("Ebook3", "autorEbook3"), "idEjemplarEbook31");
-        
         //Creo biblioteca
         Biblioteca biblio = new Biblioteca(mngSocio, mngElemento);
         
@@ -123,13 +129,15 @@ public class Biblioteca {
         biblio.listarElementos();
 
         //Podemos agregar ejemplares a algunos elemento
-        mngElemento.addEjemplar("Libro1", "idEjemplarLibro12");
-        mngElemento.addEjemplar("Musica1", "idEjemplarMusica12");
+        Ejemplar ejLibro12=new Ejemplar(eLibro1,"ejLibro12");
+        Ejemplar ejMusica12=new Ejemplar(eMusica1,"ejMusica12");
+        mngElemento.addEjemplar("Libro1", ejLibro12);
+        mngElemento.addEjemplar("Musica1", ejMusica12);
         //listo elementos
         biblio.listarElementos();
         
         //Y realizar alguna reserva para un socio
-        mngSocio.addPrestamo("SocioSinDatos1", mngElemento.reservarEjemplar("Libro1"));
+        mngSocio.addPrestamo("SocioSinDatos1", (Ejemplar)mngElemento.reservarEjemplar("Libro1"));
 //        Elemento eReserva = listaElementos.elementAt(0);
 //        Socio sReserva = listaSocios.elementAt(0);
 //        if (biblio.elementoDisponible(eReserva)

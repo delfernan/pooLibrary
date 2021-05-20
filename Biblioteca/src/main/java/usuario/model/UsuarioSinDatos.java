@@ -5,16 +5,12 @@
  */
 package usuario.model;
 
-import java.io.Serializable;
-
 /**
  *
  * @author apari
  */
-public class UsuarioSinDatos extends Socio implements Serializable{
-    private static final long serialVersionUID = 12345678912L;
+public class UsuarioSinDatos extends Socio{
     public UsuarioSinDatos(String user, String pass) {
         super(user, pass);
     }
-    
 }

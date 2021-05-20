@@ -5,14 +5,11 @@
  */
 package usuario.model;
 
-import java.io.Serializable;
-
 /**
  *
  * @author apari
  */
 public class UsuarioConDatos extends Socio implements UserData{
-    private static final long serialVersionUID = 12345678911L;
     private String nombre="";
     private String primerAp="";
     private String segundoAp="";

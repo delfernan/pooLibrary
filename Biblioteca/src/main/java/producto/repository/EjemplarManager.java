@@ -1,8 +1,10 @@
 package producto.repository;
 
-import java.util.ArrayList;
 import producto.model.Elemento;
-import producto.model.Ejemplar;
+import producto.model.IEjemplar;
+
+import java.util.ArrayList;
+
 
 public class EjemplarManager {
     private EjemplarRepository repo;
@@ -11,16 +13,16 @@ public class EjemplarManager {
         this.repo = repo;
     }
     
-    public boolean create(Elemento e,String idEjemplar){
+    public boolean create(Elemento e,IEjemplar iEjemplar){
         boolean bRes=false;
-        if(!repo.exists(idEjemplar)){
-            repo.create(idEjemplar,e);
+        if(!repo.exists(iEjemplar.getIdEjemplar())){
+            repo.create(iEjemplar);
             bRes=true;
         }
         return bRes;
     }
     
-    public ArrayList<Ejemplar> readAll(){
+    public ArrayList<IEjemplar> readAll(){
         return repo.readAll();
     }
     

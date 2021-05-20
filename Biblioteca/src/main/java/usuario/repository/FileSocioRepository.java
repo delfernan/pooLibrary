@@ -1,11 +1,12 @@
 package usuario.repository;
 
 import common.FileUtil;
+import usuario.model.Socio;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import usuario.model.Socio;
 
 public class FileSocioRepository implements SocioRepository{
     private final String filePath="data/socio.dat";
@@ -33,9 +34,12 @@ public class FileSocioRepository implements SocioRepository{
 
     @Override
     public ArrayList<Socio> readAll() {
+        ArrayList<Socio> rE=null;
         socios=FileUtil.deserializeFromFile(filePath);
-        Collection<Socio> values = socios.values();
-        ArrayList<Socio> rE=new ArrayList<>(values);
+        if(socios!=null) {
+            Collection<Socio> values = socios.values();
+            rE = new ArrayList<>(values);
+        }
         return rE;
     }
 }

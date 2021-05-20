@@ -1,21 +1,20 @@
 package producto.repository;
 
-import java.util.ArrayList;
-import producto.model.Ejemplar;
 import producto.model.Elemento;
+import producto.model.IEjemplar;
+
+import java.util.ArrayList;
 
 public class ElementoManager {
     private ElementoRepository repo;
-
-
     public ElementoManager(ElementoRepository repo) {
         this.repo = repo;
     }
     
-    public boolean create(Elemento e,String idEjemplar){
+    public boolean create(Elemento e,IEjemplar iEjemplar){
         boolean bRes=false;
         if(!repo.exists(e.getTitulo())){
-            repo.create(e,idEjemplar);
+            repo.create(e,iEjemplar);
             bRes=true;
         }
         return bRes;
@@ -27,10 +26,10 @@ public class ElementoManager {
             eRet=repo.read(titulo);
         return eRet;
     }
-    public boolean addEjemplar(String tituloElemento,String idEjemplar){
+    public boolean addEjemplar(String tituloElemento,IEjemplar iEjemplar){
         boolean bRes=false;
         if(repo.exists(tituloElemento)){
-            repo.addEjemplar(tituloElemento,idEjemplar);
+            repo.addEjemplar(tituloElemento,iEjemplar);
             bRes=true;
         }
         return bRes;
@@ -43,7 +42,7 @@ public class ElementoManager {
         return repo.ejemplaresDisponibles(tituloElemento);
     }
     
-    public Ejemplar reservarEjemplar(String tituloElemento){
+    public IEjemplar reservarEjemplar(String tituloElemento){
         return repo.reservarEjemplar(tituloElemento);
     }
 }

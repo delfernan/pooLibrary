@@ -1,20 +1,17 @@
 package producto.repository;
+import producto.model.Elemento;
+import producto.model.IEjemplar;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import producto.model.Ejemplar;
-import producto.model.Elemento;
-
-//import java.util.AbstractList;
-//import java.util.ArrayList;
 
 public class MemoryEjemplarRepository implements EjemplarRepository{
-//    private AbstractList<Ejemplar> ejemplares;
-    private AbstractMap<String,Ejemplar> ejemplares;
+    private AbstractMap<String,IEjemplar> ejemplares;
 
     public MemoryEjemplarRepository() {
-        ejemplares=new HashMap<String,Ejemplar>();
+        ejemplares=new HashMap<String,IEjemplar>();
     }
        
     @Override
@@ -22,32 +19,33 @@ public class MemoryEjemplarRepository implements EjemplarRepository{
         return ejemplares.containsKey(idEjemplar);
     }
 
+    //CAMBIAR EL NEW EJEMPLAR
     @Override
-    public void create(String idEjemplar, Elemento e) {
-        ejemplares.put(idEjemplar,new Ejemplar(e,idEjemplar));
+    public void create(IEjemplar iEjemplar) {
+        ejemplares.put(iEjemplar.getIdEjemplar(),iEjemplar);
     }
 
     @Override
     public int ejemplaresDisponibles() {
         int iRet = 0;
-        for (Ejemplar value : ejemplares.values())
+        for (IEjemplar value : ejemplares.values())
             if (!value.isPrestado()) iRet++;
  
         return iRet;
     }
     
     @Override
-    public Ejemplar getDisponible() {
-        Ejemplar eRet=null;
-        for (Ejemplar value : ejemplares.values())
+    public IEjemplar getDisponible() {
+        IEjemplar eRet=null;
+        for (IEjemplar value : ejemplares.values())
             if (!value.isPrestado()) eRet=value;
         return eRet;
     }
     
     @Override
-    public ArrayList<Ejemplar> readAll() {
-       Collection<Ejemplar> values = ejemplares.values();
-       ArrayList<Ejemplar> rE=new ArrayList<>(values);
+    public ArrayList<IEjemplar> readAll() {
+       Collection<IEjemplar> values = ejemplares.values();
+       ArrayList<IEjemplar> rE=new ArrayList<>(values);
        return rE;
     }
 }

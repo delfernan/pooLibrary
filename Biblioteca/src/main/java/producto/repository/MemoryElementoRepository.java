@@ -1,10 +1,11 @@
 package producto.repository;
+import producto.model.Elemento;
+import producto.model.IEjemplar;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import producto.model.Ejemplar;
-import producto.model.Elemento;
 
 
 public class MemoryElementoRepository implements ElementoRepository{
@@ -23,13 +24,13 @@ public class MemoryElementoRepository implements ElementoRepository{
     }
 
     @Override
-    public void create(Elemento e,String idEjemplar) {
+    public void create(Elemento e,IEjemplar iEjemplar) {
         elementos.put(e.getTitulo(),e);
         if (repoEjemplares.containsKey(e.getTitulo()))
-            repoEjemplares.get(e.getTitulo()).create(idEjemplar, e);
+            repoEjemplares.get(e.getTitulo()).create(iEjemplar);
         else{
             MemoryEjemplarRepository temp=new MemoryEjemplarRepository();
-            temp.create(idEjemplar, e);
+            temp.create(iEjemplar);
             repoEjemplares.put(e.getTitulo(), temp);
         }
     }
@@ -45,9 +46,9 @@ public class MemoryElementoRepository implements ElementoRepository{
     }
 
     @Override
-    public void addEjemplar(String titulo,String idEjemplar) {
+    public void addEjemplar(String titulo,IEjemplar iEjemplar) {
         Elemento e=elementos.get(titulo);
-        repoEjemplares.get(titulo).create(idEjemplar, e);
+        repoEjemplares.get(titulo).create(iEjemplar);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class MemoryElementoRepository implements ElementoRepository{
     }
 
     @Override
-    public Ejemplar reservarEjemplar(String titulo) {
+    public IEjemplar reservarEjemplar(String titulo) {
         return repoEjemplares.get(titulo).getDisponible();
     }
 }

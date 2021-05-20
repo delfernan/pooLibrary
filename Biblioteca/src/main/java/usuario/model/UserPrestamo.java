@@ -5,13 +5,15 @@
  */
 package usuario.model;
 
+import producto.model.IEjemplar;
+
 import java.util.ArrayList;
-import producto.model.Ejemplar;
+
 /**
  *
  * @author apari
  */
 public interface UserPrestamo{
-    public ArrayList<Ejemplar> ejemplaresPasadosDeFecha();
-    public void addListaPrestamos(Ejemplar ejemplar);
+    ArrayList<IEjemplar> ejemplaresPasadosDeFecha();
+    public void addListaPrestamos(IEjemplar ejemplar);
 }

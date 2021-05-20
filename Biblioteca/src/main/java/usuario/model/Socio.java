@@ -1,8 +1,9 @@
 package usuario.model;
 
-import java.util.ArrayList;
 import prestamo.model.Prestamo;
-import producto.model.Ejemplar;
+import producto.model.IEjemplar;
+
+import java.util.ArrayList;
 
 public class Socio extends UserLogin implements UserPrestamo{
     private ArrayList<Prestamo> listaPrestamos;
@@ -12,15 +13,15 @@ public class Socio extends UserLogin implements UserPrestamo{
         listaPrestamos=new ArrayList<>();
     }
 
-    public ArrayList<Ejemplar> ejemplaresPasadosDeFecha() {
-        ArrayList<Ejemplar> aRet=new ArrayList();
+    public ArrayList<IEjemplar> ejemplaresPasadosDeFecha() {
+        ArrayList<IEjemplar> aRet=new ArrayList();
         for (int i = 0; i < listaPrestamos.size(); i++)
             if(listaPrestamos.get(i).fueraDePlazo())
-                aRet.add(listaPrestamos.get(i).getEjemplar());
+                aRet.add((IEjemplar) listaPrestamos.get(i).getEjemplar());
         return aRet;
     }
     
-    public void addListaPrestamos(Ejemplar ejemplar) {
+    public void addListaPrestamos(IEjemplar ejemplar) {
         listaPrestamos.add(new Prestamo(this,ejemplar));
     }
 
