@@ -2,14 +2,14 @@ package acceso;
 
 import producto.model.*;
 import producto.repository.ElementoManager;
-import producto.repository.ElementoRepository;
+import producto.repository.IElementoRepository;
 import producto.repository.MemoryElementoRepository;
 import usuario.model.Socio;
 import usuario.model.UsuarioConDatos;
 import usuario.model.UsuarioSinDatos;
 import usuario.repository.FileSocioRepository;
 import usuario.repository.SocioManager;
-import usuario.repository.SocioRepository;
+import usuario.repository.ISocioRepository;
 
 import java.util.ArrayList;
 /**
@@ -17,21 +17,21 @@ import java.util.ArrayList;
  * @author Fernando
  */
 public class Biblioteca {
-//    private Vector<Socio> listaSocios;
-//    private Vector<Elemento> listaElementos;
     private SocioManager mngSocio;
     private ElementoManager mngElemento;
 
     /**
-     * Constructor
-     * @param listaSocios lista de socios dados de alta
-     * @param listaElementos lista de productos disponibles
+     * Constructor para lanzar la aplicacion
+     * @param mngSocio Manager para Socio que usa la interface ISocioRepository
+     * @param mngElemento Manager para Elemento que usa la interface IElementoRepository
      */
     public Biblioteca(SocioManager mngSocio, ElementoManager mngElemento) {
         this.mngSocio = mngSocio;
         this.mngElemento = mngElemento;
     }
-
+    /**
+     * Metodo de apoyo para imprimir socios
+     */
     public void listarSocios() {
         ArrayList listaSocios=mngSocio.readAll();
         System.out.println("---------------------");
@@ -43,7 +43,9 @@ public class Biblioteca {
                 System.out.println(e);
             }
     }
-
+    /**
+     * Metodo de apoyo para imprimir elementos
+     */
     public void listarElementos() {
         ArrayList listaElementos=mngElemento.readAll();
         System.out.println("---------------------");
@@ -55,7 +57,11 @@ public class Biblioteca {
             System.out.println("\tEjemplares disopobles="+ejemplaresDisponibles(e.getTitulo()));
         }
     }
-
+    /**
+     * Metodo de apoyo para imprimir ejemplares correspondientes a un titulo
+     * @param titulo titulo del elemento
+     * @return
+     */
     public int ejemplaresDisponibles(String titulo) {
         int iRes=0;
         Elemento e=mngElemento.read(titulo);
@@ -64,7 +70,11 @@ public class Biblioteca {
             iRes=mngElemento.ejemplaresDisponibles(titulo);
         return iRes;
     }
-
+    /**
+     * Metodo de apoyo para comprobar si existe el socio
+     * @param socio Instancia del socio
+     * @return
+     */
     public Socio esSocio(Socio socio) {
         return mngSocio.read(socio.getUser());
     }
@@ -80,24 +90,12 @@ public class Biblioteca {
 //    }
 
     public static void main(String[] args) {
-//        try {
-//            String dirName = "./data";
-//            
-//            Files.list(new File(dirName).toPath())
-//                    .limit(10)
-//                    .forEach(path -> {
-//                        System.out.println(path);
-//                    });
-//        } catch (IOException ex) {
-//            Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    
         //Creo repositorios de elemento y socio en memoria
         //Elementos
-        ElementoRepository repoElemento=new MemoryElementoRepository();
+        IElementoRepository repoElemento=new MemoryElementoRepository();
         ElementoManager mngElemento=new ElementoManager(repoElemento);
         
-        SocioRepository repoSocio=new FileSocioRepository();
+        ISocioRepository repoSocio=new FileSocioRepository();
         SocioManager mngSocio=new SocioManager(repoSocio);
         
         //Socios

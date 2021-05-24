@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public interface UserPrestamo{
     ArrayList<IEjemplar> ejemplaresPasadosDeFecha();

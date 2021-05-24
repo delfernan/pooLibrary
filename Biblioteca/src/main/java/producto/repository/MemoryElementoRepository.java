@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 
-public class MemoryElementoRepository implements ElementoRepository{
+public class MemoryElementoRepository implements IElementoRepository{
     private AbstractMap<String,Elemento> elementos;
     //identificamos cada elemento por su titulo
     private AbstractMap<String,MemoryEjemplarRepository> repoEjemplares;

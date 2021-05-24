@@ -21,13 +21,7 @@ public class CreateSocioController {
     @FXML
     private Button createId;
     
-//    private SocioRepository repoSocio;
     private SocioManager mngSocio;
-    
-//    public CreateSocioController() {
-//        repoSocio=new MemorySocioRepository();
-//        mngSocio=new SocioManager(repoSocio);
-//    }
     
     public void setManager(SocioManager mngSocio){
         this.mngSocio=mngSocio;

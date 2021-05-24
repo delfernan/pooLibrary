@@ -4,8 +4,12 @@ import producto.model.Elemento;
 import producto.model.IEjemplar;
 
 import java.util.ArrayList;
-
-public interface ElementoRepository {
+/**
+ * Interface para inyectar el repositorio en el ElementoManager
+ * @author Fernando
+ *
+ */
+public interface IElementoRepository {
     public boolean exists(String titulo);
     public void create(Elemento e, IEjemplar iEjemplar);
     public Elemento read(String titulo);

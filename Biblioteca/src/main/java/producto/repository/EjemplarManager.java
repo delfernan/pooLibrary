@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 
 public class EjemplarManager {
-    private EjemplarRepository repo;
+    private IEjemplarRepository repo;
 
-    public EjemplarManager(EjemplarRepository repo) {
+    public EjemplarManager(IEjemplarRepository repo) {
         this.repo = repo;
     }
     

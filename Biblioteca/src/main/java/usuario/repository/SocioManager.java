@@ -5,9 +5,9 @@ import producto.model.Ejemplar;
 import usuario.model.Socio;
 
 public class SocioManager {
-    private SocioRepository repo;
+    private ISocioRepository repo;
 
-    public SocioManager(SocioRepository repo) {
+    public SocioManager(ISocioRepository repo) {
         this.repo = repo;
     }
     

@@ -13,8 +13,9 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 /**
- *
- * @author apari
+ * Clase para serializar y deserializar usando ficheros y objetos serializables
+ * incluidos en una coleccion HashMap
+ * @author Fernando
  */
 public class FileUtil{
     static public void serializeToFile(String path, HashMap hash){

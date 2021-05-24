@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public abstract class UserLogin implements Serializable{
     private static final long serialVersionUID = 12345678910L;

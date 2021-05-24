@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class FileSocioRepository implements SocioRepository{
+public class FileSocioRepository implements ISocioRepository{
     private final String filePath="data/socio.dat";
     private AbstractMap<String,Socio> socios;
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class MemoryEjemplarRepository implements EjemplarRepository{
+public class MemoryEjemplarRepository implements IEjemplarRepository{
     private AbstractMap<String,IEjemplar> ejemplares;
 
     public MemoryEjemplarRepository() {

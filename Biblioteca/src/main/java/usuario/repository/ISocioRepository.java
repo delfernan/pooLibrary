@@ -2,8 +2,12 @@ package usuario.repository;
 
 import java.util.ArrayList;
 import usuario.model.Socio;
-
-public interface SocioRepository {
+/**
+ * Interface para inyectar el repositorio en el SocioManager
+ * @author Fernando
+ *
+ */
+public interface ISocioRepository {
     public boolean exists(String user);
     public void create(Socio s);
     public Socio read(String user);

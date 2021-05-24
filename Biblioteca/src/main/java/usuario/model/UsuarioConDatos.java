@@ -7,7 +7,7 @@ package usuario.model;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public class UsuarioConDatos extends Socio implements UserData{
     private String nombre="";

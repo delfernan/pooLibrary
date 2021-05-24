@@ -9,7 +9,7 @@ import usuario.model.Socio;
 //import java.util.AbstractList;
 //import java.util.ArrayList;
 
-public class MemorySocioRepository implements SocioRepository{
+public class MemorySocioRepository implements ISocioRepository{
 //    private AbstractList<Ejemplar> ejemplares;
     private AbstractMap<String,Socio> socios;
 

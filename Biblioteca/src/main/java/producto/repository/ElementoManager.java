@@ -6,8 +6,8 @@ import producto.model.IEjemplar;
 import java.util.ArrayList;
 
 public class ElementoManager {
-    private ElementoRepository repo;
-    public ElementoManager(ElementoRepository repo) {
+    private IElementoRepository repo;
+    public ElementoManager(IElementoRepository repo) {
         this.repo = repo;
     }
     

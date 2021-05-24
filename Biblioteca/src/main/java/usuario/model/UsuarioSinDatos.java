@@ -7,7 +7,7 @@ package usuario.model;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public class UsuarioSinDatos extends Socio{
     public UsuarioSinDatos(String user, String pass) {

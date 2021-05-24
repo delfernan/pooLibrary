@@ -7,7 +7,7 @@ package usuario.model;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public interface UserData {
     boolean setUserData(String nombre, String primerAp, String segundoAp);

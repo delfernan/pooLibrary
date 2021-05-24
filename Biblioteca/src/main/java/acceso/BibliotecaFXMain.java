@@ -6,15 +6,15 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import usuario.repository.MemorySocioRepository;
 import usuario.repository.SocioManager;
-import usuario.repository.SocioRepository;
+import usuario.repository.ISocioRepository;
 import usuario.ui.CreateSocioController;
 
 /**
  *
- * @author apari
+ * @author Fernando
  */
 public class BibliotecaFXMain extends Application {
-    private SocioRepository repoSocio;
+    private ISocioRepository repoSocio;
     private SocioManager mngSocio;
     @Override
     public void start(Stage stage) throws Exception {
